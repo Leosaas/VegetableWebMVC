@@ -15,7 +15,7 @@ namespace VegetableWebMVC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, IUserService userService)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }

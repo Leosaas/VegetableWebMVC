@@ -75,8 +75,6 @@ E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\VegetableWebMVC.V
 E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\VegetableWebMVC.csproj.CopyComplete
 E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\VegetableWebMVC.genruntimeconfig.cache
 E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\ref\VegetableWebMVC.dll
-E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\User\AddOrEdit.cshtml.g.cs
-E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
 E:\Project C#\VegetableWebMVC\VegetableWebMVC\bin\Debug\net5.0\Humanizer.dll
 E:\Project C#\VegetableWebMVC\VegetableWebMVC\bin\Debug\net5.0\Microsoft.AspNetCore.Razor.Language.dll
 E:\Project C#\VegetableWebMVC\VegetableWebMVC\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
@@ -154,3 +152,5 @@ E:\Project C#\VegetableWebMVC\VegetableWebMVC\bin\Debug\net5.0\runtimes\win-arm\
 E:\Project C#\VegetableWebMVC\VegetableWebMVC\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\Unit\Index.cshtml.g.cs
 E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\Unit\AddOrEdit.cshtml.g.cs
+E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\Product\Index.cshtml.g.cs
+E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\Product\AddOrEdit.cshtml.g.cs

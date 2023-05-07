@@ -14,7 +14,7 @@ namespace Infrastructure.Entities
 		[Key]
 		public int pID { get; set; }
 		public string pName { get; set; }
-		public float pPrice { get; set; }
+		public double pPrice { get; set; }
 		public int pStorageQuantity { get; set; }
 		public int cID { get; set; }
 		public int unID { get; set; }

@@ -1,83 +1,104 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Infrastructure.Entities;
+using Infrastructure.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Dynamic;
+using System.Linq;
+using VegetableWebMVC.Models;
 
 namespace VegetableWebMVC.Controllers
 {
 	public class ProductController : Controller
 	{
-		// GET: ProductController
-		public ActionResult Index()
+		private readonly IProductService productService;
+		private readonly IUnitService unitService;
+		readonly IMapper mapper;
+
+		public ProductController(IProductService productService,IUnitService unitService, IMapper mapper)
 		{
-			return View();
+			this.unitService = unitService;
+			this.productService = productService;
+			this.mapper = mapper;
 		}
 
-		// GET: ProductController/Details/5
-		public ActionResult Details(int id)
+		public IActionResult Index()
 		{
-			return View();
+			List<ProductViewModel> lst = new List<ProductViewModel>();
+			foreach(Product pro in productService.GetProducts())
+			{
+				ProductViewModel temp = mapper.Map<ProductViewModel>(pro);
+				if(temp.unID != 0)
+				{
+					Unit u = unitService.GetUnit(temp.unID);
+					temp.unName = u.unName;
+				}
+				lst.Add(temp);
+			}
+			return View(lst);
+		}
+		public IActionResult AddOrEdit(int id = 0)
+		{
+			ProductViewModel data = new ProductViewModel();
+			ViewBag.RenderedHtmlTitle = id == 0 ? "THÊM MỚI RAU CỦ" : "CẬP NHẬT RAU CỦ";
+
+			if (id != 0)
+			{
+				Product res = productService.GetProduct(id);
+				data = mapper.Map<ProductViewModel>(res);
+				if (data == null)
+				{
+					return NotFound();
+				}
+			}
+			data.Units = unitService.GetUnits();
+			return View(data);
 		}
 
-		// GET: ProductController/Create
-		public ActionResult Create()
-		{
-			return View();
-		}
-
-		// POST: ProductController/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create(IFormCollection collection)
+		public IActionResult AddOrEdit(int id, ProductViewModel data)
 		{
-			try
+			ViewBag.RenderedHtmlTitle = id == 0 ? "THÊM MỚI RAU CỦ" : "CẬP NHẬT RAU CỦ";
+
+			if (ModelState.IsValid)
 			{
-				return RedirectToAction(nameof(Index));
+				try
+				{
+					Product res = mapper.Map<Product>(data);
+					if (id != 0)
+					{
+						productService.UpdateProduct(res);
+					}
+					else
+					{
+
+						productService.InsertProduct(res);
+
+					}
+				}
+				catch (DbUpdateConcurrencyException)
+				{
+					return NotFound();
+				}
+
+				return RedirectToAction("Index", "Product");
 			}
-			catch
-			{
-				return View();
-			}
+            data.Units = unitService.GetUnits();
+            return View(data);
 		}
 
-		// GET: ProductController/Edit/5
-		public ActionResult Edit(int id)
-		{
-			return View();
-		}
-
-		// POST: ProductController/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit(int id, IFormCollection collection)
+		public IActionResult Delete(int id)
 		{
-			try
-			{
-				return RedirectToAction(nameof(Index));
-			}
-			catch
-			{
-				return View();
-			}
-		}
+			Product res = productService.GetProduct(id);
+			productService.DeleteProduct(res);
 
-		// GET: ProductController/Delete/5
-		public ActionResult Delete(int id)
-		{
-			return View();
-		}
-
-		// POST: ProductController/Delete/5
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Delete(int id, IFormCollection collection)
-		{
-			try
-			{
-				return RedirectToAction(nameof(Index));
-			}
-			catch
-			{
-				return View();
-			}
+			return RedirectToAction("Index", "Product");
 		}
 	}
 }

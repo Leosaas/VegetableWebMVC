@@ -37,10 +37,11 @@ namespace VegetableWebMVC
 			#region Services
 			services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
-			services.AddScoped<IUserRepository, UserRepository>();
-			services.AddScoped<IUserService, UserService>();
+
 			services.AddScoped<IUnitService, UnitService>();
 			services.AddScoped<IUnitRepository, UnitRepository>();
+			services.AddScoped<IProductRepository, ProductRepository>();
+			services.AddScoped<IProductService, ProductService>();
 			#endregion
 
 		}
