@@ -1,0 +1,12 @@
+E:\Project C#\VegetableWebMVC\Infrastructure\bin\Debug\net5.0\Infrastructure.deps.json
+E:\Project C#\VegetableWebMVC\Infrastructure\bin\Debug\net5.0\Infrastructure.dll
+E:\Project C#\VegetableWebMVC\Infrastructure\bin\Debug\net5.0\Infrastructure.pdb
+E:\Project C#\VegetableWebMVC\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.AssemblyReference.cache
+E:\Project C#\VegetableWebMVC\Infrastructure\obj\Debug\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\Project C#\VegetableWebMVC\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfoInputs.cache
+E:\Project C#\VegetableWebMVC\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfo.cs
+E:\Project C#\VegetableWebMVC\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CoreCompileInputs.cache
+E:\Project C#\VegetableWebMVC\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
+E:\Project C#\VegetableWebMVC\Infrastructure\obj\Debug\net5.0\refint\Infrastructure.dll
+E:\Project C#\VegetableWebMVC\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+E:\Project C#\VegetableWebMVC\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
