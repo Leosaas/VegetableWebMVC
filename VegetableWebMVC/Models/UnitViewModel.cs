@@ -16,6 +16,8 @@ namespace VegetableWebMVC.Models
         [DisplayName("Tên đơn vị tính")]
         [MaxLength(125, ErrorMessage = "Tên không quá 125 ký tự.")]
         public string unName { get; set; }
+        [DefaultValue(true)]
+        public bool unActive { get; set; }
        
     }
 }

@@ -18,5 +18,7 @@ namespace Infrastructure.Entities
 		public int pStorageQuantity { get; set; }
 		public int cID { get; set; }
 		public int unID { get; set; }
+		public byte[] pImage { get; set; }
+		public bool pActive { get; set; }
 	}
 }

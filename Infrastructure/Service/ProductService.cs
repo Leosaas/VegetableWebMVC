@@ -1,8 +1,10 @@
 ﻿using Infrastructure.Entities;
 using Infrastructure.Repository;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +18,7 @@ namespace Infrastructure.Service
 		void DeleteProduct(Product product);
 		void UpdateProduct(Product product);
 		void InsertProduct(Product product);
-	}
+    }
 	public class ProductService : IProductService
 	{
 		private IProductRepository repo;
@@ -33,7 +35,7 @@ namespace Infrastructure.Service
 
 		public Product GetProduct(int id)
 		{
-			return repo.GetById(id);
+            return repo.GetById(id);
 		}
 
 		public IQueryable<Product> GetProducts()

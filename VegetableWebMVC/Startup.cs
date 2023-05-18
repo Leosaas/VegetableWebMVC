@@ -29,7 +29,11 @@ namespace VegetableWebMVC
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllersWithViews();
-			services.AddDbContext<EXDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EXDbContextConnection")));
+			services.AddDbContext<EXDbContext>(options =>
+			{
+				options.UseSqlServer(Configuration.GetConnectionString("EXDbContextConnection"));
+                options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+            });
 			services.AddSingleton(new MapperConfiguration(mc =>
 			{
 				mc.AddProfile(new Mapping());
@@ -37,14 +41,24 @@ namespace VegetableWebMVC
 			#region Services
 			services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
-
+			//Unit
 			services.AddScoped<IUnitService, UnitService>();
 			services.AddScoped<IUnitRepository, UnitRepository>();
+			//Product
 			services.AddScoped<IProductRepository, ProductRepository>();
 			services.AddScoped<IProductService, ProductService>();
-			#endregion
+			//Category
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            //Account
+            services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<IAccountService, AccountService>();
+            //User
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
+            #endregion
 
-		}
+        }
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -71,6 +85,8 @@ namespace VegetableWebMVC
 				endpoints.MapControllerRoute(
 					name: "default",
 					pattern: "{controller=Home}/{action=Index}/{id?}");
+		
+				
 			});
 		}
 	}

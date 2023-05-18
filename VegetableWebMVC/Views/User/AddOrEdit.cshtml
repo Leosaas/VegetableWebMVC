@@ -1,0 +1,108 @@
+﻿@using Infrastructure.Entities;
+@model UserViewModel
+
+@{
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <p class="mt-0 mb-2 fw-semibold text-dark font-18 text-center">@ViewBag.RenderedHtmlTitle</p>
+            <form asp-action="AddOrEdit" asp-controller="User" asp-route-username="@Model.username" enctype ="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+                
+                <div class="float-left"> 
+                     <p>Hình ảnh</p>
+                    @{
+                        var imgSrc = "";
+                        if(Model.image != null)
+                        {
+                            
+                            
+                            
+                            var base64 = Convert.ToBase64String(Model.image);
+                             <input type="hidden" asp-for="ImageByBase64" value="@base64" />
+                            imgSrc = String.Format("data:image;base64,{0}", base64);
+                   
+                        }
+                        }
+                        <div class="input-group mb-2">
+                            <label for="ImageData">
+                                    <img src="@imgSrc" width="256px" height="256px" id="output"/>
+                             </label>
+                            <input class="form-control" type="file" id="ImageData" name="ImageData" accept="image/png, image/gif, image/jpeg, image/jpg" style="display: none" onchange="loadFile(event)">
+                            <script>
+                                 var loadFile = function(event) {
+                                 var output = document.getElementById('output');
+                                 output.src = URL.createObjectURL(event.target.files[0]);
+                                 output.onload = function() {
+                                    URL.revokeObjectURL(output.src) // free memory
+                                    }
+                                };
+                            </script>
+                        </div>
+                </div>
+                <div class="float-left" style="width: 70%; margin-left: 20px">
+                        <div class="form-group mb-2">
+                        <label asp-for="username" class="control-label"></label>
+                        <div class="input-group mb-2">
+                            <input asp-for="username" class="form-control" placeholder="Nhập tên đăng nhập" value="@Model.username" />
+                        </div>
+                        <span asp-validation-for="username" class="text-danger"></span>
+                        </div><!--end form-group-->
+                        <div class="form-group mb-2">
+                        <label asp-for="displayname" class="control-label"></label>
+                        <div class="input-group mb-2">
+                            <input asp-for="displayname" class="form-control" placeholder="Nhập tên hiển thị" value="@Model.displayname" />
+                        </div>
+                        <span asp-validation-for="displayname" class="text-danger"></span>
+                        </div><!--end form-group-->
+                        <div class="form-group mb-2">
+                        <label asp-for="address" class="control-label"></label>
+                        <div class="input-group mb-2">
+                            <input asp-for="address" class="form-control" placeholder="Nhập địa chỉ" value="@Model.address" />
+                        </div>
+                        <span asp-validation-for="address" class="text-danger"></span>
+                        </div><!--end form-group-->
+
+                        
+                 @*   @{
+                        if(Model.pID > 0)
+                        {
+                            <div class="form-group mb-2">
+                        <label asp-for="pActive" class="control-label">Hiện đang kinh doanh </label>
+                        <input asp-for="pActive" type="checkbox" value="@Model.pActive" onchange="this.value=this.checked">
+                        <span asp-validation-for="pActive" class="text-danger"></span>
+                            </div><!--end form-group-->
+                        }
+                        else
+                        {
+                            <input type="hidden" asp-for="@Model.pActive" value="true" />
+                        }
+                    
+                        }*@
+                        
+                        
+                 </div>  
+                    <div style="clear: both">
+                        <br />
+                        <div class="col-md-12 offset-md-5">
+                            <div class="d-flex">
+                                <div style="margin-right:10px;">
+                                    <input type="submit" value="Submit" class="btn btn-primary btn-block" style="width:80px" />
+                                </div>
+                                <div>
+                                    <a asp-controller="User" asp-action="Index" class="btn btn-success text-white"><i class="fe-log-out"></i> Close</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               
+            </form>
+        </div>
+    </div> <!-- end card-->
+</div>
+
+@section scripts{
+}

@@ -46,7 +46,7 @@ namespace VegetableWebMVC.Controllers
 		[ValidateAntiForgeryToken]
 		public IActionResult AddOrEdit(int id, UnitViewModel data)
 		{
-			ViewBag.RenderedHtmlTitle = id == 0 ? "THÊM MỚI TÀI KHOẢN" : "CẬP NHẬT TÀI KHOẢN";
+			ViewBag.RenderedHtmlTitle = id == 0 ? "THÊM MỚI ĐƠN VỊ TÍNH" : "CẬP NHẬT ĐƠN VỊ TÍNH";
 
 			if (ModelState.IsValid)
 			{

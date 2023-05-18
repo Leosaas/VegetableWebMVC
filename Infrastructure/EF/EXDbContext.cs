@@ -15,5 +15,8 @@ namespace Infrastructure.EF
 		}
 		public DbSet<Product> products { get; set; }
 		public DbSet<Unit> units { get; set; }
-	}
+		public DbSet<Category> categories { get; set; }
+		public DbSet<User> users { get; set; }
+		public DbSet<Account> accounts { get; set; }
+    }
 }

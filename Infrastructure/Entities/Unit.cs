@@ -14,6 +14,7 @@ namespace Infrastructure.Entities
 		[Key]
 		public int unID { get; set; }
 		public string unName { get; set; }
+		public bool unActive { get; set; }
 
 	}
 }

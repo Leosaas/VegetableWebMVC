@@ -24,10 +24,16 @@ namespace VegetableWebMVC.Models
 		[DisplayName("Mã đơn vị tính")]
 		public int cID { get; set; }
 		[DisplayName("Đơn vị tính")]
+		[Required]
 		public int unID { get; set; }
 		[DisplayName("Tên đơn vị tính")]
 		[MaxLength(125, ErrorMessage = "Tên không quá 125 ký tự.")]
 		public string unName { get; set; }
+		[DefaultValue(true)]
+		public bool pActive { get; set; }
+		public byte[] pImage { get; set; }
+		public string ImageByBase64 { get;  set; }
 		public IEnumerable<Unit> Units { get; set; }
+		public IEnumerable<Category> Categories { get; set; }
 	}
 }

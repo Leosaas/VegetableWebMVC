@@ -154,3 +154,7 @@ E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\Unit\
 E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\Unit\AddOrEdit.cshtml.g.cs
 E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\Product\Index.cshtml.g.cs
 E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\Product\AddOrEdit.cshtml.g.cs
+E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\Category\AddOrEdit.cshtml.g.cs
+E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\Category\Index.cshtml.g.cs
+E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\User\AddOrEdit.cshtml.g.cs
+E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
