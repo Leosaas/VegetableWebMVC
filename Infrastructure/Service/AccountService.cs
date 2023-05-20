@@ -17,6 +17,7 @@ namespace Infrastructure.Service
 		void Update(Account account);
 		void Delete(Account account);
         User GetUserByAccount(Account account);
+        Account VerifyAccount(string username, string password);
 	}
 	public class AccountService : IAccountService
     {
@@ -57,6 +58,14 @@ namespace Infrastructure.Service
         public void Update(Account account)
         {
             accountRepo.Update(account);
+        }
+
+        public Account VerifyAccount(string username, string password)
+        {
+            Account account = accountRepo.GetById(username);
+            if(account == null || !account.password.Equals(password))
+                return null;
+            return account;
         }
     }
 }

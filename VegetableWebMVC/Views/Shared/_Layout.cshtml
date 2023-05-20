@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Infrastructure.Entities;
+@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -9,7 +13,12 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        @{
+            string value = Context.Session.GetString("User");
+            Account account = value == null ? null : JsonConvert.DeserializeObject<Account>(value);
+            if (account != null)
+            {
+                 <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">VegetableManager</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -33,10 +42,16 @@
                          <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">User</a>
                         </li>
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Index">Account</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
+            }
+        }
+       
     </header>
     <div class="container">
         <main role="main" class="pb-3">

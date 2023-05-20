@@ -158,3 +158,13 @@ E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\Categ
 E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\Category\Index.cshtml.g.cs
 E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\User\AddOrEdit.cshtml.g.cs
 E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
+E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\Account\Edit.cshtml.g.cs
+E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\Account\Index.cshtml.g.cs
+E:\Project C#\VegetableWebMVC\VegetableWebMVC\bin\Debug\net5.0\System.Web.Mvc.dll
+E:\Project C#\VegetableWebMVC\VegetableWebMVC\bin\Debug\net5.0\System.Web.Razor.dll
+E:\Project C#\VegetableWebMVC\VegetableWebMVC\bin\Debug\net5.0\System.Web.Helpers.dll
+E:\Project C#\VegetableWebMVC\VegetableWebMVC\bin\Debug\net5.0\System.Web.WebPages.Deployment.dll
+E:\Project C#\VegetableWebMVC\VegetableWebMVC\bin\Debug\net5.0\System.Web.WebPages.Razor.dll
+E:\Project C#\VegetableWebMVC\VegetableWebMVC\bin\Debug\net5.0\System.Web.WebPages.dll
+E:\Project C#\VegetableWebMVC\VegetableWebMVC\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll
+E:\Project C#\VegetableWebMVC\VegetableWebMVC\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs

@@ -4,71 +4,67 @@ using Infrastructure.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 using System;
 using VegetableWebMVC.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace VegetableWebMVC.Controllers
 {
 	public class AccountController : Controller
 	{
-		private readonly ICategoryService categoryService;
+		private readonly IAccountService accountService;
 		readonly IMapper mapper;
 
-		public AccountController(ICategoryService categoryService, IMapper mapper)
+		public AccountController(IAccountService accountService, IMapper mapper)
 		{
-			this.categoryService = categoryService;
+			this.accountService = accountService;
 			this.mapper = mapper;
 		}
 
 		public IActionResult Index()
 		{	
-			return View(categoryService.GetCategories());
+			return View(accountService.GetAll());
 		}
-		public IActionResult AddOrEdit(int id = 0)
+		public IActionResult Login()
 		{
-			CategoryViewModel data = new CategoryViewModel();
-			ViewBag.RenderedHtmlTitle = id == 0 ? "THÊM MỚI THỂ LOẠI" : "CẬP NHẬT THỂ LOẠI";
-
-			if (id != 0)
-			{
-				Category res = categoryService.GetCategory(id);
-				data = mapper.Map<CategoryViewModel>(res);
+			return View();
+		}
+		public IActionResult Edit(string username = null)
+		{
+			AccountViewModel data = new AccountViewModel();
+			ViewBag.RenderedHtmlTitle = "CẬP NHẬT TÀI KHOẢN";
+				Account res = accountService.GetByUsername(username);
+				data = mapper.Map<AccountViewModel>(res);
 				if (data == null)
 				{
 					return NotFound();
 				}
-			}
+			
 
 			return View(data);
 		}
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult AddOrEdit(int id, CategoryViewModel data)
+		public IActionResult Edit(AccountViewModel data)
 		{
-			ViewBag.RenderedHtmlTitle = id == 0 ? "THÊM MỚI THỂ LOẠI" : "CẬP NHẬT THỂ LOẠI";
-
+			ViewBag.RenderedHtmlTitle = "CẬP NHẬT TÀI KHOẢN";
 			if (ModelState.IsValid)
 			{
 				try
 				{
-					Category res = mapper.Map<Category>(data);
-					if (id != 0)
-					{
-						categoryService.UpdateCategory(res);
-					}
-					else
-					{
+					Account res = mapper.Map<Account>(data);
+					accountService.Update(res);
 
-						categoryService.InsertCategory(res);
-					}
 				}
 				catch (DbUpdateConcurrencyException)
 				{
 					return NotFound();
 				}
 
-				return RedirectToAction("Index", "Category");
+				return RedirectToAction("Index", "Account");
 			}
 
 			return View(data);
@@ -76,12 +72,26 @@ namespace VegetableWebMVC.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult Delete(int id)
+		public IActionResult ResetPassword(string username)
 		{
-			Category res = categoryService.GetCategory(id);
-			categoryService.DeleteCategory(res);
+			Account res = accountService.GetByUsername(username);
+			res.password = "123";
+			accountService.Update(res);
 
-			return RedirectToAction("Index", "Category");
+			return RedirectToAction("Index", "Account");
+		}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Login(AccountViewModel accountView)
+		{
+			Account account = accountService.VerifyAccount(accountView.username, accountView.password);
+			// TempData["account"] = JsonConvert.SerializeObject(accountView); ;
+			if (account == null)
+			{
+				return View(accountView);
+			}
+			HttpContext.Session.SetString("User", JsonConvert.SerializeObject(account));
+            return RedirectToAction("Index", "Home");
 		}
 	}
 }

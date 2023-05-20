@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Service;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -20,13 +21,15 @@ namespace VegetableWebMVC.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(AccountViewModel account = null)
         {
-            return View();
+            return View(account);
         }
 
         public IActionResult Privacy()
         {
+            
+
             return View();
         }
 

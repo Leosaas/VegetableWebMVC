@@ -47,7 +47,17 @@
                         <div class="form-group mb-2">
                         <label asp-for="username" class="control-label"></label>
                         <div class="input-group mb-2">
-                            <input asp-for="username" class="form-control" placeholder="Nhập tên đăng nhập" value="@Model.username" />
+                            @{
+                                if (string.IsNullOrEmpty(Model.username))
+                                {
+                                    <input asp-for="username" class="form-control" placeholder="Nhập tên đăng nhập" />
+                                }
+                                else
+                                {
+                                    <input asp-for="username" class="form-control" placeholder="Nhập tên đăng nhập" value="@Model.username" disabled/>
+                                }
+                            }
+                            
                         </div>
                         <span asp-validation-for="username" class="text-danger"></span>
                         </div><!--end form-group-->
